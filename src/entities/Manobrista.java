@@ -16,5 +16,5 @@ public class Manobrista extends Funcionario {
 	public void pagamento(double taxa) {
 		super.pagamento(carrosGuardados * taxa);
 	}
-
+	
 }
