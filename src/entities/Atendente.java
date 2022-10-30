@@ -20,15 +20,12 @@ public class Atendente extends Funcionario {
 	public void setHospedesAtendidos(int hospedesAtendidos) {
 		this.hospedesAtendidos = hospedesAtendidos;
 	}
-
-	@Override
-	public void abonoSalario(double taxa) {
-		
-		double percentualHospedesAtendidos = hospedesAtendidos/100;
-		
-		super.abonoSalario(taxa + percentualHospedesAtendidos);
-	}
 	
+	@Override
+	public void pagamento(double taxa) {
+		super.pagamento(hospedesAtendidos * taxa);
+	}
+
 	public void registrarEstadia() {
 		
 		int numero = Integer.parseInt(JOptionPane.showInputDialog("Numero quarto: "));
@@ -40,6 +37,8 @@ public class Atendente extends Funcionario {
 		quarto.setStatus(StatusQuarto.OCUPADO);
 		
 		quartos.add(quarto);
+		
+		hospedesAtendidos++;
 	}
 	
 	public Hospede registrarHospede() {
@@ -63,8 +62,7 @@ public class Atendente extends Funcionario {
 		}
 		
 		JOptionPane.showMessageDialog(null, listaQuartos);
-		
+
 	}
-	
 
 }

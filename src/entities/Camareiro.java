@@ -11,13 +11,10 @@ public class Camareiro extends Funcionario {
 	public void setQuartosArrumados(int quartosArrumados) {
 		this.quartosArrumados = quartosArrumados;
 	}
-
+	
 	@Override
-	public void abonoSalario(double taxa) {
-
-		double percentualQuartosArrumados = quartosArrumados/100;
-		
-		super.abonoSalario(taxa + percentualQuartosArrumados);
-	}
+	public void pagamento(double taxa) {	
+		super.pagamento(taxa * quartosArrumados);
+	}	
 
 }

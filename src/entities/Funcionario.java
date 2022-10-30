@@ -5,16 +5,16 @@ import java.text.NumberFormat;
 
 import javax.swing.JOptionPane;
 
-public class Funcionario {
+public abstract class Funcionario {
 
-	private int id;
+	private Integer id;
 	private String nome;
 	private String setor;
-	private int horasTrabalhadas;
-	private double valorPorHora;
-	private double salario = 0;
+	private Integer horasTrabalhadas;
+	private Double valorPorHora;
+	private Double salario = 0d;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	
@@ -38,7 +38,7 @@ public class Funcionario {
 		this.setor = setor;
 	}
 	
-	public int getHorasTrabalhadas() {
+	public Integer getHorasTrabalhadas() {
 		return horasTrabalhadas;
 	}
 	
@@ -46,7 +46,7 @@ public class Funcionario {
 		this.horasTrabalhadas = horasTrabalhadas;
 	}
 	
-	public double getValorPorHora() {
+	public Double getValorPorHora() {
 		return valorPorHora;
 	}
 	
@@ -54,15 +54,15 @@ public class Funcionario {
 		this.valorPorHora = valorPorHora;
 	}
 	
-	public double getSalario() {
+	public Double getSalario() {
 		return salario;
 	}
 	
 	public void cadastrar() {
 		this.id = Integer.parseInt(JOptionPane.showInputDialog("Digite o código do funcionário: "));
 		this.nome = JOptionPane.showInputDialog("Nome do funcionário: ");
-		this.setor = JOptionPane.showInputDialog("Setor (Manobrista / Recepcionista / Faxineiro): ");
 		this.valorPorHora = Double.parseDouble(JOptionPane.showInputDialog("Valor por hora: "));
+		this.horasTrabalhadas = Integer.parseInt(JOptionPane.showInputDialog("Horas trabalhadas: "));
 	}
 	
 	public void mostrar() {
@@ -81,20 +81,12 @@ public class Funcionario {
 				
 	}
 	
-	public void pagamento() {
-		salario = horasTrabalhadas * valorPorHora;
-	}
-	
-	public void trabalhar() {
-		int horas = Integer.parseInt(JOptionPane.showInputDialog("Quer trabalhar quantas horas: "));
+	public void pagamento(double taxa) {
 		
-		JOptionPane.showMessageDialog(null, "Trabalhando...");
+		salario += horasTrabalhadas * valorPorHora;
 		
-		setHorasTrabalhadas(horas);
-	}
-	
-	public void abonoSalario(double taxa) {
 		salario += salario * taxa/100;
 	}
-	
+
+
 }
